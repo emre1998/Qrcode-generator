@@ -11,10 +11,12 @@ function handleSubmit(event) {
     qrimg.src = qrsrc;
 
     function isValidText(text) {
-        if(/[^a-zA-Z\s]/.test(text)) {
+        try {
+            new URL(text);
+            return true;
+        } catch (error) {
             return false;
         }
-        return true;
     }
 
     function showAlert(message) {
